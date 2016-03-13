@@ -9,7 +9,7 @@ Tests Pass.
 
 To mess around in the console you can try:
 
-Voter Factories
+#Voter Factories
 ---------------
 FactoryGirl.build :voter
 (inititalize a voter in memory)
@@ -23,7 +23,7 @@ FactoryGirl.build :voter, :too_young
 FactoryGirl.build :registered_voter / FactoryGirl.create :registered_voter
 (a registered voter is saved into the database so either will persist)
 
-Candidate Factories
+#Candidate Factories
 -------------------
 FactoryGirl.build :candidate / FactoryGirl.create :candidate
 (inititalize or persist a candidate, defaults to national candidate)
@@ -38,7 +38,7 @@ FactoryGirl.create :candidate, :with_many_voters, :number_of_voters: n
 FactoryGirl.create :state_candidate
 (persist a candidate that only voters from same state can vote for)
 
-Vote Factories
+#Vote Factories
 --------------
 FactoryGirl.create :vote
 (persists new vote with a new registered voter and national candidate)
