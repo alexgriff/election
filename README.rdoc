@@ -1,0 +1,54 @@
+Voter, Vote, Candidate Models implemented
+
+Voter has many Candidates through Votes
+Candidate has many Voters through Votes
+Vote belongs to each
+
+Some rspec tests as a way to fmailiarize myself with FactoryGirl and Faker.
+Tests Pass.
+
+To mess around in the console you can try:
+
+Voter Factories
+---------------
+FactoryGirl.build :voter
+(inititalize a voter in memory)
+
+FactoryGirl.create :voter
+(persist an unregistered voter in the database.)
+
+FactoryGirl.build :voter, :too_young
+(initialize a voter younger than 18 who will not be able to be saved)
+
+FactoryGirl.build :registered_voter / FactoryGirl.create :registered_voter
+(a registered voter is saved into the database so either will persist)
+
+Candidate Factories
+-------------------
+FactoryGirl.build :candidate / FactoryGirl.create :candidate
+(inititalize or persist a candidate, defaults to national candidate)
+
+FactoryGirl.create :candidate, :with_many_voters
+(persists a candidate with a default of 10 votes,
+try candidate.voters.count, will also persist 10 voters)
+
+FactoryGirl.create :candidate, :with_many_voters, :number_of_voters: n
+(can create a candidate with n number of new voters)
+
+FactoryGirl.create :state_candidate
+(persist a candidate that only voters from same state can vote for)
+
+Vote Factories
+--------------
+FactoryGirl.create :vote
+(persists new vote with a new registered voter and national candidate)
+
+(UNEXPLAINED BUG here. try vote.candidate.votes.first and you will get back
+the original vote object as expected.  vote.voter.votes is for some reason an empty
+collections proxy array.  Can be fixed by voter.reload. Super weird because
+vote.voter.candidates.first works correctly and a voter only has a candidate 
+through a vote, also the vote has the associated voter_id so idk its really weird,
+but works with reload so nbd)
+
+
+
