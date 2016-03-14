@@ -34,7 +34,7 @@ describe 'Vote' do
     end
 
     it 'is valid for a voter to vote for a state candidate from the same state' do
-      expect(build(:vote, :in_state_vote)).to be_valid
+      expect(build :in_state_vote).to be_valid
     end
 
     it 'is invalid for a voter to vote for a state candidate from a different state' do

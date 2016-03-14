@@ -1,4 +1,3 @@
-
 describe 'Voter' do 
 
   describe 'factory' do
@@ -51,8 +50,8 @@ describe 'Voter' do
   describe 'register' do
 
     it 'only registers eligible voters' do
-      build_list(:registered_voter, 3)
-      build_list(:registered_voter, 3, :too_young)
+      create_list(:registered_voter, 3)
+      build :registered_voter, :too_young
 
       expect(Voter.all.count).to eq(3)
     end
