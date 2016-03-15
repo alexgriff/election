@@ -22,6 +22,13 @@ require 'rspec/rails'
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
 
+
+  # include this to call Factory Girl methods directly
+  # without having to scope.
+  # Example:
+  #   create :voter 
+  # instead of:
+  #   FactorGirl.create :voter
   config.include FactoryGirl::Syntax::Methods
 
 

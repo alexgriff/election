@@ -2,8 +2,8 @@
 FactoryGirl.define do
   
   factory :vote do
-    association :candidate
     association :voter, factory: :registered_voter
+    association :candidate
 
     factory :in_state_vote do
       state = Faker::Address.state

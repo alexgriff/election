@@ -29,9 +29,8 @@ FactoryGirl.define do
       after(:create) do |candidate, evaluator|
         create_list(:vote, evaluator.number_of_voters, candidate: candidate)
       end
-
     end
-    
+
   end
 end
 

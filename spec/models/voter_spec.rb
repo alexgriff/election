@@ -8,7 +8,7 @@ describe 'Voter' do
 
   end
 
-  describe 'initialization' do
+  describe 'initialization' do 
 
     it 'is invalid without a first name' do
       voter = build(:voter, first_name: nil)
@@ -17,7 +17,7 @@ describe 'Voter' do
       expect(voter.errors[:first_name]).to include("can't be blank")
     end
   
-    it 'is invalid without a last name' do
+    it 'is invalid without a last name' do 
       voter = build(:voter, last_name: nil)
       voter.valid?
       
@@ -50,8 +50,8 @@ describe 'Voter' do
   describe 'register' do
 
     it 'only registers eligible voters' do
-      create_list(:registered_voter, 3)
-      build :registered_voter, :too_young
+      build_list(:registered_voter, 3)
+      build_list(:registered_voter, 3, :too_young)
 
       expect(Voter.all.count).to eq(3)
     end
